@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     $users = DB::table('users')->get();
+
+    //$aUser = DB::select('select * from users where id = ?', [1]);
+
+    // $liteUser = DB::connection('sqlite')->select('select * from users');
+
+
     $comments = DB::table('comments')->get();
-    
+
+//    dump("mysql:", $aUser);
+
+    dump($users, $comments);
+
     return view('welcome');
 });
